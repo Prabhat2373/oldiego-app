@@ -9,7 +9,7 @@ const stack = createNativeStackNavigator();
 const AppStackNavigation = () => {
   const { variant, navigationTheme } = useTheme();
   return (
-    <stack.Navigator key={variant} screenOptions={{ headerShown: false }}>
+    <stack.Navigator screenOptions={{ headerShown: false }}>
       {StackRoutes.map((route) => {
         return (
           <stack.Screen
@@ -17,32 +17,18 @@ const AppStackNavigation = () => {
             component={route.component}
             options={{
               headerShown: false,
-              header: ({ navigation, options, route, back }) => {
-                // if (hasCustomHeader) {
-                return (
-                  <StackNavigationHeader
-                    showBackButton={true}
-                    showAvatar={true}
-                    title={route && route && route?.params?.seller?.name}
-                    onBackPress={() => {
-                      navigation.goBack();
-                    }}
-                  />
-                );
-                // }
-                // return (
-                //   <Header
-                //     hasBack={true}
-                //     navigation={navigation}
-                //     showAvatar={showAvatar}
-                //     title={label}
-                //     route={route}
-                //     // onBackPress={() => {
-                //     //   navigation.goBack();
-                //     // }}
-                //   />
-                // );
-              },
+              // header: ({ navigation, options, route, back }) => {
+              //   return (
+              //     <StackNavigationHeader
+              //       showBackButton={true}
+              //       showAvatar={true}
+              //       title={route && route && route?.params?.seller?.name}
+              //       onBackPress={() => {
+              //         navigation.goBack();
+              //       }}
+              //     />
+              //   );
+              // },
             }}
           />
         );

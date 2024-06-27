@@ -17,6 +17,7 @@ import AppStackNavigation from "./navigation/stack/AppStackNavigation";
 import { ThemeProvider, useTheme } from "./theme";
 import { MMKV } from "react-native-mmkv";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import MainAppContainer from "./containers/app/MainAppContainer";
 // import StackNavigator from './src/navigations/stack/StackNavigator';
 // import AppStackNavigation from './src/navigation/stack/AppStackNavigation';
 export const storage = new MMKV();
@@ -25,25 +26,14 @@ export const queryClient = new QueryClient();
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === "dark";
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   // const { variant, navigationTheme } = useTheme();
   return (
     <>
-      <ThemeProvider storage={storage}>
-        <QueryClientProvider client={queryClient}>
-          <StatusBar
-            barStyle={isDarkMode ? "light-content" : "dark-content"}
-            backgroundColor={backgroundStyle.backgroundColor}
-          />
-          {/* <NavigationContainer theme={navigationTheme}> */}
-          <NavigationContainer>
-            <AppStackNavigation />
-          </NavigationContainer>
-        </QueryClientProvider>
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider storage={storage}>
+          <MainAppContainer />
+        </ThemeProvider>
+      </QueryClientProvider>
     </>
   );
 }

@@ -30,6 +30,7 @@ import type {
   FulfilledThemeConfiguration,
   Variant,
 } from "@/types/theme/config";
+import { useColorScheme } from "react-native";
 
 // Types
 
@@ -44,19 +45,27 @@ type Props = PropsWithChildren<{
 }>;
 
 export function ThemeProvider({ children = false, storage }: Props) {
+  const isDarkMode = useColorScheme() === "dark";
+  console.log("isDarkMode", isDarkMode);
+
+  const defaultTheme = !isDarkMode ? "default" : "dark";
+  console.log("defaultTheme", defaultTheme);
+
   // Current theme variant
-  const [variant, setVariant] = useState(
-    (storage.getString("theme") as Variant) || "default"
-  );
+  const [variant, setVariant] = useState(defaultTheme);
+
+  console.log("variant", variant);
 
   // Initialize theme at default if not defined
   useEffect(() => {
     const appHasThemeDefined = storage.contains("theme");
-    if (!appHasThemeDefined) {
-      storage.set("theme", "default");
-      setVariant("default");
+    // if (!appHasThemeDefined) {
+    // }
+    if (defaultTheme) {
+      storage.set("theme", defaultTheme);
+      setVariant(defaultTheme);
     }
-  }, []);
+  }, [defaultTheme]);
 
   const changeTheme = (nextVariant: Variant) => {
     setVariant(nextVariant);
