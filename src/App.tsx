@@ -14,7 +14,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import "react-native-gesture-handler";
 import AppStackNavigation from "./navigation/stack/AppStackNavigation";
-import { ThemeProvider } from "./theme";
+import { ThemeProvider, useTheme } from "./theme";
 import { MMKV } from "react-native-mmkv";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // import StackNavigator from './src/navigations/stack/StackNavigator';
@@ -29,19 +29,21 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  // const { variant, navigationTheme } = useTheme();
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider storage={storage}>
+      <ThemeProvider storage={storage}>
+        <QueryClientProvider client={queryClient}>
           <StatusBar
             barStyle={isDarkMode ? "light-content" : "dark-content"}
             backgroundColor={backgroundStyle.backgroundColor}
           />
+          {/* <NavigationContainer theme={navigationTheme}> */}
           <NavigationContainer>
             <AppStackNavigation />
           </NavigationContainer>
-        </ThemeProvider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
     </>
   );
 }

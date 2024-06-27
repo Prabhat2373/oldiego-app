@@ -1,6 +1,7 @@
 import {
   createContext,
   PropsWithChildren,
+  useContext,
   useEffect,
   useMemo,
   useState,
@@ -42,7 +43,7 @@ type Props = PropsWithChildren<{
   storage: MMKV;
 }>;
 
-function ThemeProvider({ children = false, storage }: Props) {
+export function ThemeProvider({ children = false, storage }: Props) {
   // Current theme variant
   const [variant, setVariant] = useState(
     (storage.getString("theme") as Variant) || "default"
@@ -119,4 +120,14 @@ function ThemeProvider({ children = false, storage }: Props) {
   );
 }
 
-export default ThemeProvider;
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+
+  if (context === undefined) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+
+  return context;
+};
+
+// export default ThemeProvider;
