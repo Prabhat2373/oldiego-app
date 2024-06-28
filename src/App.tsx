@@ -18,6 +18,7 @@ import { ThemeProvider, useTheme } from "./theme";
 import { MMKV } from "react-native-mmkv";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import MainAppContainer from "./containers/app/MainAppContainer";
+import "./translations/index";
 // import StackNavigator from './src/navigations/stack/StackNavigator';
 // import AppStackNavigation from './src/navigation/stack/AppStackNavigation';
 export const storage = new MMKV();
