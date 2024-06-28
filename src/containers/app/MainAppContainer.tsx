@@ -16,6 +16,7 @@ const MainAppContainer = () => {
 
   const { navigationTheme } = useTheme();
 
+  console.log("navigationTheme", navigationTheme);
   return (
     <>
       <StatusBar

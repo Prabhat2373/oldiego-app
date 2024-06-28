@@ -1,6 +1,6 @@
 import { useTheme } from "@/theme";
 import { config } from "@/theme/_config";
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   Pressable,
   Text,
@@ -8,20 +8,25 @@ import {
   PressableProps,
   TextStyle,
   ViewStyle,
+  ActivityIndicator,
 } from "react-native";
 
 interface ButtonProps extends PressableProps {
   onPress: () => void;
-  title: string;
+
   style?: ViewStyle;
   textStyle?: TextStyle;
+  children: ReactNode;
+  isLoading?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
   onPress,
-  title,
+
   style,
   textStyle,
+  children,
+  isLoading,
   ...props
 }) => {
   const { colors } = useTheme();
@@ -37,8 +42,18 @@ const Button: React.FC<ButtonProps> = ({
       ]}
       {...props}
     >
-      <Text style={[styles.text, textStyle, { color: colors.text_primary }]}>
-        {title}
+      <Text
+        style={[
+          styles.text,
+          textStyle,
+          { color: colors.text_primary, display: "flex", alignItems: "center" },
+        ]}
+      >
+        {isLoading ? (
+          <ActivityIndicator color={colors.white} />
+        ) : (
+          <>{children}</>
+        )}
       </Text>
     </Pressable>
   );

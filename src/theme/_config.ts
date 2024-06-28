@@ -15,6 +15,7 @@ const colorsLight = {
   purple100: "#E1E1EF",
   purple50: "#1B1A23",
   text_primary: "white",
+  white: "white",
 } as const;
 
 const colorsDark = {
@@ -29,6 +30,7 @@ const colorsDark = {
   purple100: "#252732",
   purple50: "#1B1A23",
   text_primary: "white",
+  white: "white",
 } as const;
 
 export const sizes = [12, 16, 24, 32, 40, 80] as const;
@@ -48,7 +50,7 @@ export const config = {
   },
   navigationColors: {
     ...DefaultTheme.colors,
-    background: colorsLight.gray50,
+    background: colorsLight.white,
     card: colorsLight.gray50,
   },
   variants: {

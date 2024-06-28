@@ -19,34 +19,22 @@ const SignUp = () => {
 
   const [getApi, { data, isFetching }] = useLazyGetTestQuery();
   return (
-    <Container>
+    <Container >
       <View style={[styles.heading_container]}>
         <Heading size={32}>
           <TranslateText>signup</TranslateText>
         </Heading>
       </View>
-      <Button
-        onPress={() => {
-          onChangeLanguage(i18next.language === "fr" ? "en" : "fr");
-        }}
-        title="Change language"
-      />
-      <Button
-        onPress={() => {
-          // onChangeLanguage(i18next.language === "fr" ? "en" : "fr");
-          getApi("");
-        }}
-        title={isFetching ? "Loading" : "Fetch API"}
-      />
+
       <View style={[styles.inputs_container]}>
         <Input label="Email" />
         <Input label="Email" />
         <Input label="Email" />
       </View>
       <View style={[styles.social_auth_container]}>
-        <Button onPress={() => {}} title="Sign Up"></Button>
-        <Button onPress={() => {}} title="Google "></Button>
-        <Button onPress={() => {}} title="Github"></Button>
+        <Button onPress={() => {}}>Sign Up</Button>
+        <Button onPress={() => {}}>Google</Button>
+        <Button onPress={() => {}}>Github</Button>
       </View>
     </Container>
   );
@@ -61,6 +49,12 @@ export const styles = StyleSheet.create({
     gap: 12,
   },
 
+  main_container: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    width: "100%",
+  },
   inputs_container: {
     // flex: 1,
     display: "flex",
@@ -73,6 +67,6 @@ export const styles = StyleSheet.create({
     // display: "flex",
 
     // gap: 12,
-    marginTop: 12,
+    marginTop: 50,
   },
 });

@@ -7,7 +7,7 @@ interface IContainer {
 
 const Container = ({ children }: IContainer) => {
   return (
-    <View style={{ margin: 20 }}>
+    <View style={{ margin: 20, backgroundColor: "#ffffff" }}>
       <>{children}</>
     </View>
   );
