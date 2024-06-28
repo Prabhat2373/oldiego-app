@@ -1,10 +1,12 @@
 import AuthNavigator from "@/navigation/auth/AuthNavigator";
 import AppStackNavigation from "@/navigation/stack/AppStackNavigation";
+import { store } from "@/redux/store";
 import { useTheme } from "@/theme";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { StatusBar, useColorScheme } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import { Provider } from "react-redux";
 
 const MainAppContainer = () => {
   const isDarkMode = useColorScheme() === "dark";
@@ -20,11 +22,12 @@ const MainAppContainer = () => {
         barStyle={isDarkMode ? "light-content" : "dark-content"}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-
-      <NavigationContainer theme={navigationTheme}>
-        {/* <AppStackNavigation /> */}
-        <AuthNavigator />
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer theme={navigationTheme}>
+          {/* <AppStackNavigation /> */}
+          <AuthNavigator />
+        </NavigationContainer>
+      </Provider>
     </>
   );
 };

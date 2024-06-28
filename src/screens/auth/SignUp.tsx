@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "@/theme";
 import i18next from "i18next";
 import TranslateText from "@/components/ui/view/TranslateText";
+import { useLazyGetTestQuery } from "@/services/testApi";
 
 const SignUp = () => {
   const { t } = useTranslation();
@@ -15,6 +16,8 @@ const SignUp = () => {
   const onChangeLanguage = (lang: "fr" | "en") => {
     void i18next.changeLanguage(lang);
   };
+
+  const [getApi, { data, isFetching }] = useLazyGetTestQuery();
   return (
     <Container>
       <View style={[styles.heading_container]}>
@@ -27,6 +30,13 @@ const SignUp = () => {
           onChangeLanguage(i18next.language === "fr" ? "en" : "fr");
         }}
         title="Change language"
+      />
+      <Button
+        onPress={() => {
+          // onChangeLanguage(i18next.language === "fr" ? "en" : "fr");
+          getApi("");
+        }}
+        title={isFetching ? "Loading" : "Fetch API"}
       />
       <View style={[styles.inputs_container]}>
         <Input label="Email" />
