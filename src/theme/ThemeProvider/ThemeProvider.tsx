@@ -79,7 +79,7 @@ export function ThemeProvider({ children = false, storage }: Props) {
 
   const fonts = useMemo(() => {
     return {
-      ...generateFontSizes(),
+      ...generateFontSizes(), 
       ...generateFontColors(fullConfig),
       ...staticFontStyles,
     };

@@ -130,6 +130,7 @@ import { SafeScreen } from "../../components/template";
 import { fetchOne } from "../../services/users/index";
 import { useTheme } from "../../theme/index";
 import Button from "@/components/ui/Button";
+import Heading from "@/components/ui/view/Heading";
 
 // import { isImageSourcePropType } from "@/types/guards/image";
 
@@ -266,7 +267,10 @@ function Explore() {
     //   </View>
     // </SafeScreen>
     <>
-      <Text style={[fonts.gray100, { color: colors.gray100 }]}>Hello</Text>
+      <Heading size={12}>Hello World</Heading>
+      <Text style={[fonts.size_16, fonts.gray200, gutters.marginBottom_40]}>
+        {t("welcome:subtitle")}
+      </Text>
       <Button onPress={onChangeTheme} title="Toggle Theme"></Button>
     </>
   );

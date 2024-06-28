@@ -8,7 +8,8 @@ const colorsLight = {
   gray800: "#303030",
   gray400: "#4D4D4D",
   gray200: "#A1A1A1",
-  gray100: "#DFDFDF",
+
+  gray100: "#000000",
   gray50: "#EFEFEF",
   purple500: "#44427D",
   purple100: "#E1E1EF",
@@ -22,7 +23,7 @@ const colorsDark = {
   gray800: "#E0E0E0",
   gray400: "#969696",
   gray200: "#BABABA",
-  gray100: "#000000",
+  gray100: "#DFDFDF",
   gray50: "#EFEFEF",
   purple500: "#A6A4F0",
   purple100: "#252732",
@@ -30,7 +31,7 @@ const colorsDark = {
   text_primary: "white",
 } as const;
 
-const sizes = [12, 16, 24, 32, 40, 80] as const;
+export const sizes = [12, 16, 24, 32, 40, 80] as const;
 
 export const config = {
   colors: colorsLight,
