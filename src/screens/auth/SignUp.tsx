@@ -21,9 +21,9 @@ import {
   IconUser,
 } from "@tabler/icons-react-native";
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const { t } = useTranslation();
-  const { colors } = useTheme();
+  const { colors, fonts } = useTheme();
   const onChangeLanguage = (lang: "fr" | "en") => {
     void i18next.changeLanguage(lang);
   };
@@ -43,71 +43,95 @@ const SignUp = () => {
   };
   return (
     <Container>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSignup}
-        validationSchema={signUpValidation}
+      <View
+        style={{
+          height: 200,
+        }}
       >
-        {({ values, errors, handleChange, handleSubmit }) => {
-          return (
-            <>
-              <View
-                style={[
-                  styles.heading_container,
-                  {
-                    backgroundColor: colors.background_primary,
-                  },
-                ]}
-              >
-                <Heading size={32}>
-                  <TranslateText>signup</TranslateText>
-                </Heading>
-              </View>
-
-              <View style={[styles.inputs_container]}>
-                <Input
-                  icon={<IconUser color={colors.gray200} />}
-                  error={errors?.name}
-                  label="Name"
-                  id="name"
-                  value={values?.name}
-                  onChangeText={handleChange("name")}
-                />
-                <Input
-                  icon={<IconMail color={colors.gray200} />}
-                  error={errors.email}
-                  label="Email"
-                  id="email"
-                  value={values?.email}
-                  onChangeText={handleChange("email")}
-                />
-                <Input
-                  icon={<IconLock color={colors.gray200} />}
-                  error={errors?.password}
-                  label="Password"
-                  isPassword
-                  id="password"
-                  value={values?.password}
-                  onChangeText={handleChange("password")}
-                />
-              </View>
-              <View style={[styles.social_auth_container]}>
-                <Button onPress={handleSubmit}>Sign Up</Button>
-                <Button
-                  startIcon={<IconBrandGoogle color={colors.text_primary} />}
-                  onPress={() => {}}
-                  variant="outline"
-                  color={colors.foreground_primary}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    width: "100%",
-                  }}
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSignup}
+          validationSchema={signUpValidation}
+          validateOnChange={false}
+          validateOnBlur={false}
+        >
+          {({ values, errors, handleChange, handleSubmit, touched }) => {
+            return (
+              <>
+                <View
+                  style={[
+                    styles.heading_container,
+                    {
+                      backgroundColor: colors.background_primary,
+                    },
+                  ]}
                 >
-                  <TranslateText>sign_up_with_google</TranslateText>
-                </Button>
-                <Button
+                  <Heading size={24}>
+                    <TranslateText>signup</TranslateText>
+                  </Heading>
+                </View>
+
+                <View style={[styles.inputs_container]}>
+                  <Input
+                    icon={<IconUser color={colors.gray200} />}
+                    error={errors?.name}
+                    label="Name"
+                    id="name"
+                    value={values?.name}
+                    onChangeText={handleChange("name")}
+                  />
+                  <Input
+                    icon={<IconMail color={colors.gray200} />}
+                    error={errors.email}
+                    label="Email"
+                    id="email"
+                    value={values?.email}
+                    onChangeText={handleChange("email")}
+                  />
+                  <Input
+                    icon={<IconLock color={colors.gray200} />}
+                    error={errors?.password}
+                    label="Password"
+                    isPassword
+                    id="password"
+                    value={values?.password}
+                    onChangeText={handleChange("password")}
+                  />
+                </View>
+                <View style={{ marginVertical: 20 }}>
+                  <Text
+                    style={{
+                      fontSize: fonts.size_16.fontSize,
+                      color: fonts.gray200.color,
+                    }}
+                  >
+                    By Signing Up, You agree to our{" "}
+                    <Text style={{ color: colors.primary }}>
+                      Terms and Conditions
+                    </Text>{" "}
+                    and{" "}
+                    <Text style={{ color: colors.primary }}>
+                      Privacy Policy
+                    </Text>
+                  </Text>
+                </View>
+                <View style={[styles.social_auth_container]}>
+                  <Button onPress={handleSubmit}>Sign Up</Button>
+                  <Button
+                    startIcon={<IconBrandGoogle color={colors.text_primary} />}
+                    onPress={() => {}}
+                    variant="outline"
+                    color={colors.foreground_primary}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      width: "100%",
+                    }}
+                  >
+                    <TranslateText>sign_up_with_google</TranslateText>
+                  </Button>
+                  {/* <Button
                   startIcon={
                     <IconBrandGithub
                       fill={colors.text_primary}
@@ -125,28 +149,57 @@ const SignUp = () => {
                   }}
                 >
                   <TranslateText>sign_up_with_github</TranslateText>
-                </Button>
-                <Button
-                  onPress={() => {}}
-                  color={colors.foreground_primary}
-                  variant="outline"
-                  // style={{
-                  //   borderColor: colors.primary,
-                  // }}
-                  startIcon={
-                    <IconBrandApple
-                      fill={colors.text_primary}
-                      color={colors.text_primary}
-                    />
-                  }
+                </Button> */}
+                  <Button
+                    onPress={() => {}}
+                    color={colors.foreground_primary}
+                    variant="outline"
+                    // style={{
+                    //   borderColor: colors.primary,
+                    // }}
+                    startIcon={
+                      <IconBrandApple
+                        fill={colors.text_primary}
+                        color={colors.text_primary}
+                      />
+                    }
+                  >
+                    <TranslateText>sign_up_with_apple</TranslateText>
+                  </Button>
+                </View>
+                <View
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: 100,
+                  }}
                 >
-                  <TranslateText>sign_up_with_apple</TranslateText>
-                </Button>
-              </View>
-            </>
-          );
-        }}
-      </Formik>
+                  <Text
+                    style={{
+                      color: colors.gray200,
+                      fontSize: fonts.size_16.fontSize,
+                    }}
+                  >
+                    Don't Have an Account?{" "}
+                    <Text
+                      onPress={() => {
+                        navigation.navigate("login");
+                      }}
+                      style={{
+                        color: colors.primary,
+                        fontWeight: fonts.bold.fontWeight,
+                      }}
+                    >
+                      Sign In
+                    </Text>
+                  </Text>
+                </View>
+              </>
+            );
+          }}
+        </Formik>
+      </View>
     </Container>
   );
 };
@@ -179,5 +232,6 @@ export const styles = StyleSheet.create({
 
     // gap: 12,
     marginTop: 90,
+    marginBottom: 40,
   },
 });

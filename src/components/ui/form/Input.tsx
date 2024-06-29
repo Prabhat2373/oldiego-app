@@ -59,7 +59,7 @@ const Input: React.FC<InputProps> = memo(
         {
           translateY: animatedIsFocused.interpolate({
             inputRange: [0, 1],
-            outputRange: [20, 2],
+            outputRange: [17, 2],
           }),
         },
         {
@@ -70,7 +70,7 @@ const Input: React.FC<InputProps> = memo(
         },
       ],
       color: !!error
-        ? colors.red_primary
+        ? colors.red500
         : animatedIsFocused.interpolate({
             inputRange: [0, 1],
             outputRange: [colors.gray200, "#757575"],
@@ -90,9 +90,6 @@ const Input: React.FC<InputProps> = memo(
             style,
             {
               backgroundColor: colors.foreground_primary,
-              // display: "flex",
-              // alignItems: "center",
-              // flexDirection: "row",
             },
           ]}
         >
@@ -104,7 +101,6 @@ const Input: React.FC<InputProps> = memo(
                 left: 10,
                 width: 24,
                 height: 24,
-                // backgroundColor: "red",
                 zIndex: 2,
               }}
             >
@@ -118,7 +114,7 @@ const Input: React.FC<InputProps> = memo(
               styles.input,
               {
                 borderColor: !!error
-                  ? colors.red_primary
+                  ? colors.red500
                   : isFocused
                   ? colors.primary
                   : "transparent",
@@ -144,23 +140,17 @@ const Input: React.FC<InputProps> = memo(
               style={styles.eyeIcon}
               onPress={handleTogglePasswordVisibility}
             >
-              {/* <Icon
-              name={showPassword ? "visibility" : "visibility-off"}
-              size={20}
-              color="#757575"
-            /> */}
-
               {!showPassword ? (
-                <IconEye color={colors.text_primary} />
+                <IconEye color={error ? colors.red500 : colors.text_primary} />
               ) : (
-                <IconEyeOff color={colors.text_primary} />
+                <IconEyeOff
+                  color={error ? colors.red500 : colors.text_primary}
+                />
               )}
             </TouchableOpacity>
           )}
         </View>
-        {error ? (
-          <Text style={{ color: colors.red_primary }}>{error}</Text>
-        ) : null}
+        {error ? <Text style={{ color: colors.red500 }}>{error}</Text> : null}
       </View>
     );
   }

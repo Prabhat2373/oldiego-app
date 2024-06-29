@@ -27,7 +27,7 @@ const Heading = (props: IHeading) => {
       style={[
         fonts?.[fontSize || "size_24"],
         fonts.gray100,
-        gutters.marginBottom_40,
+        // gutters.marginBottom_40,
         fonts.bold,
       ]}
     >

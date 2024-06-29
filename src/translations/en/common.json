@@ -3,9 +3,12 @@
       "full": "React Native Boilerplate",
       "initials": "RNB"
     },
-    "signup":"SIGN UP",
+    "signup":"Sign Up",
     "sign_up_with_apple":"Sign up with Apple",
     "sign_up_with_google":"Sign up with Google",
-    "sign_up_with_github":"Sign up with Github"
+    "sign_in_with_google":"Sign in with Google",
+    "sign_up_with_github":"Sign up with Github",
+    "sign_in_with_apple":"Sign in with Github",
+    "sign_in_to_oldiego":"Sign In to Oldiego"
   }
   
