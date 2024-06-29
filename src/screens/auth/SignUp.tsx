@@ -11,7 +11,15 @@ import TranslateText from "@/components/ui/view/TranslateText";
 import { useLazyGetTestQuery } from "@/services/testApi";
 import { Form, Formik } from "formik";
 import { signUpValidation } from "@/validators/auth/auth.validator";
-import { IconBrandGoogle } from "@tabler/icons-react-native";
+import {
+  IconBrandApple,
+  IconBrandGithub,
+  IconBrandGoogle,
+  IconLock,
+  IconMail,
+  IconRecordMail,
+  IconUser,
+} from "@tabler/icons-react-native";
 
 const SignUp = () => {
   const { t } = useTranslation();
@@ -58,6 +66,7 @@ const SignUp = () => {
 
               <View style={[styles.inputs_container]}>
                 <Input
+                  icon={<IconUser color={colors.gray200} />}
                   error={errors?.name}
                   label="Name"
                   id="name"
@@ -65,6 +74,7 @@ const SignUp = () => {
                   onChangeText={handleChange("name")}
                 />
                 <Input
+                  icon={<IconMail color={colors.gray200} />}
                   error={errors.email}
                   label="Email"
                   id="email"
@@ -72,6 +82,7 @@ const SignUp = () => {
                   onChangeText={handleChange("email")}
                 />
                 <Input
+                  icon={<IconLock color={colors.gray200} />}
                   error={errors?.password}
                   label="Password"
                   isPassword
@@ -82,14 +93,54 @@ const SignUp = () => {
               </View>
               <View style={[styles.social_auth_container]}>
                 <Button onPress={handleSubmit}>Sign Up</Button>
-                <Button onPress={() => {}} color={colors.foreground_primary}>
-                  <Text style={{ color: colors.white }}>
-                    <IconBrandGoogle />
-                  </Text>{" "}
-                  Google
+                <Button
+                  startIcon={<IconBrandGoogle color={colors.text_primary} />}
+                  onPress={() => {}}
+                  variant="outline"
+                  color={colors.foreground_primary}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
+                >
+                  <TranslateText>sign_up_with_google</TranslateText>
                 </Button>
-                <Button onPress={() => {}} color={colors.foreground_primary}>
-                  Github
+                <Button
+                  startIcon={
+                    <IconBrandGithub
+                      fill={colors.text_primary}
+                      color={colors.text_primary}
+                    />
+                  }
+                  onPress={() => {}}
+                  variant="outline"
+                  color={colors.foreground_primary}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
+                >
+                  <TranslateText>sign_up_with_github</TranslateText>
+                </Button>
+                <Button
+                  onPress={() => {}}
+                  color={colors.foreground_primary}
+                  variant="outline"
+                  // style={{
+                  //   borderColor: colors.primary,
+                  // }}
+                  startIcon={
+                    <IconBrandApple
+                      fill={colors.text_primary}
+                      color={colors.text_primary}
+                    />
+                  }
+                >
+                  <TranslateText>sign_up_with_apple</TranslateText>
                 </Button>
               </View>
             </>

@@ -17,8 +17,10 @@ const colorsLight = {
   white: "white",
   text: "black",
   background_primary: "white",
-  foreground_primary: "white",
+  foreground_primary: "#F9FAFC",
   red_primary: "red",
+  black: "black",
+  border_foreground: "#EEF2F6",
 } as const;
 
 const colorsDark = {
@@ -38,6 +40,9 @@ const colorsDark = {
   background_primary: "#0E172A",
   foreground_primary: "#1B2537",
   red_primary: "red",
+  black: "black",
+  // border_foreground: "#EEF2F6",
+  border_foreground: "#1B2537",
 } as const;
 
 export const sizes = [12, 16, 24, 32, 40, 80] as const;

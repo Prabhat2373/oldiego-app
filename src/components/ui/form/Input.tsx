@@ -11,18 +11,18 @@ import {
   Animated,
   Text,
 } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons"; // Make sure you have this library installed
+// import Icon from "react-native-vector-icons/MaterialIcons"; // Make sure you have this library installed
 
 interface InputProps extends TextInputProps {
   label: string;
-  iconName?: string;
+  icon?: JSX.Element;
   isPassword?: boolean;
   error?: boolean;
 }
 
 const Input: React.FC<InputProps> = memo(
-  ({ label, iconName, isPassword, style, error, ...props }) => {
-    const { colors } = useTheme();
+  ({ label, icon, isPassword, style, error, ...props }) => {
+    const { colors, fonts } = useTheme();
     // console.log("value", props.value,props.value);
     const [isFocused, setIsFocused] = useState(false);
     const [showPassword, setShowPassword] = useState(!isPassword);
@@ -52,8 +52,9 @@ const Input: React.FC<InputProps> = memo(
     }, []);
 
     const labelStyle = {
+      fontSize: fonts.size_16.fontSize,
       position: "absolute",
-      left: iconName ? 40 : 10,
+      left: icon ? 40 : 10,
       transform: [
         {
           translateY: animatedIsFocused.interpolate({
@@ -72,7 +73,7 @@ const Input: React.FC<InputProps> = memo(
         ? colors.red_primary
         : animatedIsFocused.interpolate({
             inputRange: [0, 1],
-            outputRange: [colors.text, "#757575"],
+            outputRange: [colors.gray200, "#757575"],
             // outputRange: ["blue", "red"],
           }),
       backgroundColor: colors.foreground_primary,
@@ -89,18 +90,29 @@ const Input: React.FC<InputProps> = memo(
             style,
             {
               backgroundColor: colors.foreground_primary,
+              // display: "flex",
+              // alignItems: "center",
+              // flexDirection: "row",
             },
           ]}
         >
-          {iconName && (
-            <Icon
-              name={iconName}
-              size={20}
-              color={isFocused ? "#6200ee" : "#757575"}
-              style={styles.icon}
-            />
+          {icon && (
+            <View
+              style={{
+                position: "absolute",
+                top: 18,
+                left: 10,
+                width: 24,
+                height: 24,
+                // backgroundColor: "red",
+                zIndex: 2,
+              }}
+            >
+              {icon}
+            </View>
           )}
           <TextInput
+            selectionColor={colors.primary}
             ref={inputRef}
             style={[
               styles.input,
@@ -114,7 +126,7 @@ const Input: React.FC<InputProps> = memo(
                 backgroundColor: colors.foreground_primary,
                 paddingTop: 20,
               },
-              iconName ? { paddingLeft: 40 } : null,
+              icon ? { paddingLeft: 45 } : null,
             ]}
             secureTextEntry={!showPassword}
             onFocus={handleFocus}
@@ -172,9 +184,9 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   icon: {
-    position: "absolute",
-    top: 10,
-    left: 10,
+    // position: "absolute",
+    // top: 10,
+    // left: 10,
   },
   eyeIcon: {
     position: "absolute",
