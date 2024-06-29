@@ -12,30 +12,34 @@ import {
 } from "react-native";
 
 interface ButtonProps extends PressableProps {
-  onPress: () => void;
-
+  onPress?: () => void;
   style?: ViewStyle;
   textStyle?: TextStyle;
   children: ReactNode;
   isLoading?: boolean;
+  color?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
   onPress,
-
   style,
   textStyle,
   children,
   isLoading,
+  color,
   ...props
 }) => {
   const { colors } = useTheme();
   return (
     <Pressable
-      onPress={onPress}
+      // onPress={onPress}
       style={({ pressed }) => [
         {
-          backgroundColor: pressed ? colors.purple100 : colors.primary,
+          backgroundColor: pressed
+            ? colors.purple100
+            : color
+            ? color
+            : colors.primary,
         },
         styles.button,
         style,

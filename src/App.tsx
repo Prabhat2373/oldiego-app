@@ -6,18 +6,15 @@
  */
 
 import React from "react";
-import { SafeAreaView, StatusBar, useColorScheme } from "react-native";
+import { useColorScheme } from "react-native";
 
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
-import { NavigationContainer } from "@react-navigation/native";
 
-import "react-native-gesture-handler";
-import AppStackNavigation from "./navigation/stack/AppStackNavigation";
-import { ThemeProvider, useTheme } from "./theme";
-import { MMKV } from "react-native-mmkv";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "react-native-gesture-handler";
+import { MMKV } from "react-native-mmkv";
 import MainAppContainer from "./containers/app/MainAppContainer";
+import { ThemeProvider } from "./theme";
 import "./translations/index";
 // import StackNavigator from './src/navigations/stack/StackNavigator';
 // import AppStackNavigation from './src/navigation/stack/AppStackNavigation';
