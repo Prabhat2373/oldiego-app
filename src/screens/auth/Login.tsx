@@ -11,7 +11,7 @@
 
 // export default Login;
 
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React, { useMemo } from "react";
 import Heading from "@/components/ui/view/Heading";
 import Container from "@/components/ui/Container";
@@ -56,11 +56,7 @@ const SignUp = ({ navigation }) => {
   };
   return (
     <Container>
-      <View
-        style={{
-          height: 200,
-        }}
-      >
+      <View>
         <Formik
           initialValues={initialValues}
           onSubmit={handleSignup}
@@ -70,25 +66,24 @@ const SignUp = ({ navigation }) => {
         >
           {({ values, errors, handleChange, handleSubmit, touched }) => {
             return (
-              <>
-                <View
-                  style={[
-                    styles.heading_container,
-                    {
-                      backgroundColor: colors.background_primary,
-                    },
-                  ]}
-                >
-                  <Heading size={24}>
-                    <TranslateText>sign_in_to_oldiego</TranslateText>
-                  </Heading>
-
-                  <Text style={{ color: colors.gray200 }}>
-                    Welcome back! Please enter your details
-                  </Text>
-                </View>
-
+              <View style={styles.main_container}>
                 <View style={[styles.inputs_container]}>
+                  <View
+                    style={[
+                      styles.heading_container,
+                      {
+                        backgroundColor: colors.background_primary,
+                      },
+                    ]}
+                  >
+                    <Heading size={24}>
+                      <TranslateText>sign_in_to_oldiego</TranslateText>
+                    </Heading>
+
+                    <Text style={{ color: colors.gray200 }}>
+                      Welcome back! Please enter your details
+                    </Text>
+                  </View>
                   {/* <Input
                     icon={<IconUser color={colors.gray200} />}
                     error={errors?.name}
@@ -114,25 +109,47 @@ const SignUp = ({ navigation }) => {
                     value={values?.password}
                     onChangeText={handleChange("password")}
                   />
-                </View>
+                  <View>
+                    <Text
+                      style={{
+                        color: colors.gray200,
+                        fontSize: fonts.size_16.fontSize,
+                      }}
+                    >
+                      Forgot Password?{" "}
+                      <Text
+                        onPress={() => {
+                          navigation.navigate("signup");
+                        }}
+                        style={{
+                          color: colors.primary,
+                          fontWeight: fonts.bold.fontWeight,
+                        }}
+                      >
+                        Reset it
+                      </Text>
+                    </Text>
+                  </View>
 
-                <View style={[styles.social_auth_container]}>
-                  <Button onPress={handleSubmit}>Sign In</Button>
-                  <Button
-                    startIcon={<IconBrandGoogle color={colors.text_primary} />}
-                    onPress={() => {}}
-                    variant="outline"
-                    color={colors.foreground_primary}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
-                  >
-                    <TranslateText>sign_in_with_google</TranslateText>
-                  </Button>
-                  {/* <Button
+                  <View style={[styles.social_auth_container]}>
+                    <Button onPress={handleSubmit}>Sign In</Button>
+                    <Button
+                      startIcon={
+                        <IconBrandGoogle color={colors.text_primary} />
+                      }
+                      onPress={() => {}}
+                      variant="outline"
+                      color={colors.foreground_primary}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "100%",
+                      }}
+                    >
+                      <TranslateText>sign_in_with_google</TranslateText>
+                    </Button>
+                    {/* <Button
                   startIcon={
                     <IconBrandGithub
                       fill={colors.text_primary}
@@ -151,29 +168,30 @@ const SignUp = ({ navigation }) => {
                 >
                   <TranslateText>sign_up_with_github</TranslateText>
                 </Button> */}
-                  <Button
-                    onPress={() => {}}
-                    color={colors.foreground_primary}
-                    variant="outline"
-                    // style={{
-                    //   borderColor: colors.primary,
-                    // }}
-                    startIcon={
-                      <IconBrandApple
-                        fill={colors.text_primary}
-                        color={colors.text_primary}
-                      />
-                    }
-                  >
-                    <TranslateText>sign_in_with_apple</TranslateText>
-                  </Button>
+                    <Button
+                      onPress={() => {}}
+                      color={colors.foreground_primary}
+                      variant="outline"
+                      // style={{
+                      //   borderColor: colors.primary,
+                      // }}
+                      startIcon={
+                        <IconBrandApple
+                          fill={colors.text_primary}
+                          color={colors.text_primary}
+                        />
+                      }
+                    >
+                      <TranslateText>sign_in_with_apple</TranslateText>
+                    </Button>
+                  </View>
                 </View>
                 <View
                   style={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    marginTop: 100,
+                    // marginTop: 100,
                   }}
                 >
                   <Text
@@ -196,7 +214,7 @@ const SignUp = ({ navigation }) => {
                     </Text>
                   </Text>
                 </View>
-              </>
+              </View>
             );
           }}
         </Formik>
@@ -216,9 +234,10 @@ export const styles = StyleSheet.create({
 
   main_container: {
     display: "flex",
-    alignItems: "center",
     flexDirection: "column",
-    width: "100%",
+    justifyContent: "space-between",
+    height: "100%",
+    paddingVertical: 20,
   },
   inputs_container: {
     // flex: 1,
@@ -232,7 +251,7 @@ export const styles = StyleSheet.create({
     // display: "flex",
 
     // gap: 12,
-    marginTop: 90,
-    marginBottom: 40,
+    marginTop: 40,
+    marginBottom: 30,
   },
 });

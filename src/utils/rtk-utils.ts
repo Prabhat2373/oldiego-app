@@ -4,7 +4,7 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 // import Cookies from "js-cookie";
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || "",
+  baseUrl: "http://10.0.2.2:8001/api/v2",
   prepareHeaders: (headers) => {
     // const token = (getState() as RootState).token?.token;
     // const token = Cookies.get("token");
