@@ -25,9 +25,7 @@ const SignUp = ({ navigation }) => {
   const { t } = useTranslation();
   const storage = new MMKV();
   const { colors, fonts } = useTheme();
-  const onChangeLanguage = (lang: "fr" | "en") => {
-    void i18next.changeLanguage(lang);
-  };
+
   console.log("envvariable", process.env.NEXT_PUBLIC_API_BASE_URL);
 
   const [register, { isLoading }] = useRegisterMutation();

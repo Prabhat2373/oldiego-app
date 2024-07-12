@@ -23,7 +23,10 @@ import i18next from "i18next";
 import TranslateText from "@/components/ui/view/TranslateText";
 import { useLazyGetTestQuery } from "@/services/testApi";
 import { Form, Formik } from "formik";
-import { signUpValidation } from "@/validators/auth/auth.validator";
+import {
+  loginValidation,
+  signUpValidation,
+} from "@/validators/auth/auth.validator";
 import {
   IconBrandApple,
   IconBrandGithub,
@@ -33,10 +36,12 @@ import {
   IconRecordMail,
   IconUser,
 } from "@tabler/icons-react-native";
+import { useLoginMutation } from "@/services/user/userApi";
 
-const SignUp = ({ navigation }) => {
+const Login = ({ navigation }) => {
   const { t } = useTranslation();
   const { colors, fonts } = useTheme();
+  const [login, { isLoading }] = useLoginMutation();
   const onChangeLanguage = (lang: "fr" | "en") => {
     void i18next.changeLanguage(lang);
   };
@@ -51,16 +56,19 @@ const SignUp = ({ navigation }) => {
     };
   }, []);
 
-  const handleSignup = async (data: typeof initialValues) => {
+  const handleLogin = async (data: typeof initialValues) => {
     console.log("submitting", data);
+    const res = await login(data);
+    console.log("apires", res);
+    // if(issuccess)
   };
   return (
     <Container>
       <View>
         <Formik
           initialValues={initialValues}
-          onSubmit={handleSignup}
-          validationSchema={signUpValidation}
+          onSubmit={handleLogin}
+          validationSchema={loginValidation}
           validateOnChange={false}
           validateOnBlur={false}
         >
@@ -119,7 +127,7 @@ const SignUp = ({ navigation }) => {
                       Forgot Password?{" "}
                       <Text
                         onPress={() => {
-                          navigation.navigate("signup");
+                          navigation.navigate("reset-password");
                         }}
                         style={{
                           color: colors.primary,
@@ -223,7 +231,7 @@ const SignUp = ({ navigation }) => {
   );
 };
 
-export default SignUp;
+export default Login;
 
 export const styles = StyleSheet.create({
   social_auth_container: {

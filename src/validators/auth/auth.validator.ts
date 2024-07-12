@@ -7,3 +7,10 @@ export const signUpValidation = Yup.object().shape({
     .required("Email is required"),
   password: Yup.string().required("Password is required"),
 });
+
+export const loginValidation = Yup.object().shape({
+  email: Yup.string()
+    .email("Please Enter a Valid Email")
+    .required("Email is required"),
+  password: Yup.string().required("Password is required"),
+});
