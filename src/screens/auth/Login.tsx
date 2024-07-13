@@ -1,42 +1,23 @@
-// import {View, Text} from 'react-native';
-// import React from 'react';
-
-// const Login = () => {
-//   return (
-//     <View>
-//       <Text>Login</Text>
-//     </View>
-//   );
-// };
-
-// export default Login;
-
-import { View, Text, StyleSheet, ScrollView } from "react-native";
-import React, { useMemo } from "react";
-import Heading from "@/components/ui/view/Heading";
+import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Input from "@/components/ui/form/Input";
-import Button from "@/components/ui/Button";
-import { useTranslation } from "react-i18next";
-import { useTheme } from "@/theme";
-import i18next from "i18next";
+import Heading from "@/components/ui/view/Heading";
 import TranslateText from "@/components/ui/view/TranslateText";
 import { useLazyGetTestQuery } from "@/services/testApi";
-import { Form, Formik } from "formik";
-import {
-  loginValidation,
-  signUpValidation,
-} from "@/validators/auth/auth.validator";
+import { useLoginMutation } from "@/services/user/userApi";
+import { useTheme } from "@/theme";
+import { loginValidation } from "@/validators/auth/auth.validator";
 import {
   IconBrandApple,
-  IconBrandGithub,
   IconBrandGoogle,
   IconLock,
   IconMail,
-  IconRecordMail,
-  IconUser,
 } from "@tabler/icons-react-native";
-import { useLoginMutation } from "@/services/user/userApi";
+import { Formik } from "formik";
+import i18next from "i18next";
+import React, { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { StyleSheet, Text, View } from "react-native";
 
 const Login = ({ navigation }) => {
   const { t } = useTranslation();
@@ -204,7 +185,7 @@ const Login = ({ navigation }) => {
                 >
                   <Text
                     style={{
-                      color: colors.gray200,
+                      color: colors.gray800,
                       fontSize: fonts.size_16.fontSize,
                     }}
                   >

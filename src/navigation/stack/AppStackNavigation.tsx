@@ -17,18 +17,19 @@ const AppStackNavigation = () => {
             component={route.component}
             options={{
               headerShown: false,
-              // header: ({ navigation, options, route, back }) => {
-              //   return (
-              //     <StackNavigationHeader
-              //       showBackButton={true}
-              //       showAvatar={true}
-              //       title={route && route && route?.params?.seller?.name}
-              //       onBackPress={() => {
-              //         navigation.goBack();
-              //       }}
-              //     />
-              //   );
-              // },
+              header: ({ navigation, options, route, back }) => {
+                return (
+                  // <StackNavigationHeader
+                  //   showBackButton={true}
+                  //   showAvatar={true}
+                  //   title={route && route && route?.params?.seller?.name}
+                  //   onBackPress={() => {
+                  //     navigation.goBack();
+                  //   }}
+                  // />
+                  <></>
+                );
+              },
             }}
           />
         );

@@ -25,8 +25,8 @@ const MainAppContainer = () => {
       />
       <Provider store={store}>
         <NavigationContainer theme={navigationTheme}>
-          {/* <AppStackNavigation /> */}
-          <AuthNavigator />
+          <AppStackNavigation />
+          {/* <AuthNavigator /> */}
         </NavigationContainer>
       </Provider>
     </>

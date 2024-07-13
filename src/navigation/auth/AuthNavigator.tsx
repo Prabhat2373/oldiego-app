@@ -9,13 +9,13 @@ const AuthNavigator = () => {
   const Auth = createNativeStackNavigator();
   return (
     <Auth.Navigator>
-      <Auth.Screen
+      {/* <Auth.Screen
         name="verify-otp"
         component={VerifyOTP}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
       <Auth.Screen
         name="signup"
         component={SignUp}

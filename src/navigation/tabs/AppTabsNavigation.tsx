@@ -13,6 +13,9 @@ const AppTabsNavigation = () => {
             name={tab.label}
             component={tab.component}
             key={tab.route}
+            options={{
+              headerShown: false,
+            }}
           />
         );
       })}

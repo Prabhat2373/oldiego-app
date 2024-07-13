@@ -185,7 +185,7 @@ const SignUp = ({ navigation }) => {
                 >
                   <Text
                     style={{
-                      color: colors.gray200,
+                      color: colors.gray800,
                       fontSize: fonts.size_16.fontSize,
                     }}
                   >
