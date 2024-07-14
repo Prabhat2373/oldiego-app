@@ -9,9 +9,12 @@ import {
 import { useTheme } from "@/theme";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
+import { useNavigation } from "@react-navigation/native";
 
 const ExploreHeaderContainer = () => {
   const { colors, fonts } = useTheme();
+  const navigation = useNavigation(); // Correct usage
+
   return (
     <Container>
       <View style={styles.container}>
@@ -25,6 +28,9 @@ const ExploreHeaderContainer = () => {
         >
           <View>
             <Button
+              onPress={() => {
+                navigation.navigate("pickLocation"); // Correct method call
+              }}
               centerIcon={<IconMapPin color={colors.gray800} />}
               variant="icon"
             ></Button>

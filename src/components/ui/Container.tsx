@@ -10,7 +10,13 @@ const Container = ({ children }: IContainer) => {
   const { colors } = useTheme();
 
   return (
-    <View style={{ margin: 20, backgroundColor: colors.background_primary }}>
+    <View
+      style={{
+        margin: 20,
+        backgroundColor: colors.background_primary,
+        // height: "100%",
+      }}
+    >
       <>{children}</>
     </View>
   );

@@ -314,7 +314,8 @@ const Input: React.FC<InputProps> = memo(
                   : isFocused
                   ? colors.primary
                   : "transparent",
-                color: colors.text,
+                // color: colors.gray100,
+                color: colors.gray100,
                 backgroundColor: colors.foreground_primary,
                 paddingTop: !withFloatingLabel ? 12 : 20,
               },
@@ -324,6 +325,7 @@ const Input: React.FC<InputProps> = memo(
             onFocus={handleFocus}
             onBlur={handleBlur}
             {...props}
+            placeholderTextColor={colors.gray200}
           />
           {withFloatingLabel && (
             <Animated.Text

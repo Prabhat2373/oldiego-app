@@ -4,9 +4,10 @@
 // import ExploreScreen from "../../screens/explore/ExploreScreen";
 // import ProfileScreen from "../../screens/profile/ProfileScreen";
 
-import ExploreScreen from '../../screens/explore/ExploreScreen';
-import Parent from '../../screens/Parent';
-import ProfileScreen from '../../screens/profile/ProfileScreen';
+import PickLocation from "@/screens/explore/PickLocation";
+import ExploreScreen from "../../screens/explore/ExploreScreen";
+import Parent from "../../screens/Parent";
+import ProfileScreen from "../../screens/profile/ProfileScreen";
 
 export const StackRoutes = [
   //   {
@@ -17,19 +18,24 @@ export const StackRoutes = [
   //     showAvatar: false,
   //   },
   {
-    name: 'Parent',
+    name: "Parent",
     component: Parent,
-    label: 'Parent',
+    label: "Parent",
   },
   {
-    name: 'home',
+    name: "home",
     component: ExploreScreen,
-    label: 'Explore',
+    label: "Explore",
   },
   {
-    name: 'profile',
+    name: "pickLocation",
+    component: PickLocation,
+    label: "Pick Location",
+  },
+  {
+    name: "profile",
     component: ProfileScreen,
-    label: 'profile',
+    label: "profile",
   },
 ];
 
@@ -49,8 +55,8 @@ export const StackRoutes = [
 
 export const TabRoutes = [
   {
-    route: 'explore',
-    label: 'explore',
+    route: "explore",
+    label: "explore",
     // icon: (isActive: boolean) => (
     //   <Icon
     //     type={Icons.MaterialCommunityIcons}
@@ -65,8 +71,8 @@ export const TabRoutes = [
     isHidden: false,
   },
   {
-    route: 'search',
-    label: 'search',
+    route: "search",
+    label: "search",
     // icon: (isActive: boolean) => (
     //   <Icon
     //     type={Icons.Ionicons}
@@ -81,27 +87,33 @@ export const TabRoutes = [
     isHidden: false,
     // mainIcon: true,
   },
-  {
-    route: 'sell',
-    label: 'Sell',
-    // icon: (isActive: boolean) => (
-    //   <Icon
-    //     type={Icons.MaterialCommunityIcons}
-    //     name={isActive ? 'plus-circle' : 'plus-circle-outline'}
-    //     size={60}
-    //     color={isActive ? '#000' : '#888'}
-    //     style={{}}
-    //   />
-    // ),
-    component: ProfileScreen,
-    level: 0,
-    isHidden: false,
-    mainIcon: false,
-  },
+  // {
+  //   route: "pick-location",
+  //   component: PickLocation,
+  //   label: "Pick Location",
+  //   isHidden: true,
+  // },
+  // {
+  //   route: "sell",
+  //   label: "Sell",
+  //   // icon: (isActive: boolean) => (
+  //   //   <Icon
+  //   //     type={Icons.MaterialCommunityIcons}
+  //   //     name={isActive ? 'plus-circle' : 'plus-circle-outline'}
+  //   //     size={60}
+  //   //     color={isActive ? '#000' : '#888'}
+  //   //     style={{}}
+  //   //   />
+  //   // ),
+  //   component: ProfileScreen,
+  //   level: 0,
+  //   isHidden: false,
+  //   mainIcon: false,
+  // },
 
   {
-    route: 'messages',
-    label: 'Messages',
+    route: "messages",
+    label: "Messages",
     // icon: (isActive: boolean) => (
     //   <Icon
     //     type={Icons.MaterialCommunityIcons}
@@ -117,8 +129,8 @@ export const TabRoutes = [
   },
 
   {
-    route: 'profile',
-    label: 'profile',
+    route: "profile",
+    label: "profile",
     // icon: (isActive: boolean) => (
     //   <Icon
     //     type={Icons.FontAwesome}
