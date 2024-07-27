@@ -13,6 +13,7 @@ const AppStackNavigation = () => {
       {StackRoutes.map((route) => {
         return (
           <stack.Screen
+            key={route?.name}
             name={route.name}
             component={route.component}
             options={{

@@ -24,7 +24,7 @@ const colorsLight = {
 } as const;
 
 const colorsDark = {
-  primary: "#4038FF",
+  primary: "#7570ff",
   red500: "#C13333",
   gray800: "#E0E0E0",
   gray400: "#969696",

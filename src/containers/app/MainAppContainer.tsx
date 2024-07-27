@@ -4,7 +4,12 @@ import { store } from "@/redux/store";
 import { useTheme } from "@/theme";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { StatusBar, useColorScheme } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  StatusBar,
+  useColorScheme,
+} from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { Provider } from "react-redux";
 
@@ -24,10 +29,18 @@ const MainAppContainer = () => {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <Provider store={store}>
-        <NavigationContainer theme={navigationTheme}>
-          <AppStackNavigation />
-          {/* <AuthNavigator /> */}
-        </NavigationContainer>
+        <KeyboardAvoidingView
+          style={{
+            flex: 1,
+          }}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
+        >
+          <NavigationContainer theme={navigationTheme}>
+            <AppStackNavigation />
+            {/* <AuthNavigator /> */}
+          </NavigationContainer>
+        </KeyboardAvoidingView>
       </Provider>
     </>
   );

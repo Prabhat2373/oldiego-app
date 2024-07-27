@@ -9,34 +9,23 @@ import { useTheme } from "@/theme";
 import Container from "@/components/ui/Container";
 import Input from "@/components/ui/form/Input";
 import Button from "@/components/ui/Button";
+import PageHeader from "@/components/navigation/PageHeader";
+import { useNavigation } from "@react-navigation/native";
+import { APP_ROUTES } from "@/constants/route.constant";
 
 const PickLocationContainer = () => {
   const { colors, fonts } = useTheme();
+  const { navigate } = useNavigation();
   return (
     <Container>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          width: "100%",
-        }}
-      >
-        <IconArrowNarrowLeft color={colors.gray200} />
-        <Text
-          style={{ color: colors.gray800, fontWeight: fonts.bold.fontWeight }}
-        >
-          Choose Your Location
-        </Text>
-        <View></View>
-      </View>
+      <PageHeader heading="Choose Your Location" nav={APP_ROUTES.EXPLORE} />
       <View
         style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
           width: "100%",
-          height: "96%",
+          height: "90%",
         }}
       >
         <View style={{ display: "flex", flexDirection: "column", gap: 23 }}>
@@ -115,7 +104,10 @@ const PickLocationContainer = () => {
           </View>
         </View>
         <View>
-          <Button>Set Location</Button>
+          <Button onPress={() => navigate(APP_ROUTES.EXPLORE)}>
+            {" "}
+            Set Location
+          </Button>
         </View>
       </View>
     </Container>

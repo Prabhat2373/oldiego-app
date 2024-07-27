@@ -215,6 +215,7 @@ const Button: React.FC<ButtonProps> = ({
     case "ghost":
       buttonStyles = {
         backgroundColor: "transparent",
+        width: "100%",
       };
       textStyles = {
         color: colors.primary,
@@ -249,12 +250,12 @@ const Button: React.FC<ButtonProps> = ({
     <Pressable
       onPress={onPress}
       style={({ pressed }) => [
+        styles.button,
         {
           ...buttonStyles,
           // Adjust opacity on press
           opacity: pressed ? 0.8 : 1,
         },
-        styles.button,
         variant === "icon" && styles.iconButton, // Apply iconButton styles if variant is "icon"
         style,
       ]}

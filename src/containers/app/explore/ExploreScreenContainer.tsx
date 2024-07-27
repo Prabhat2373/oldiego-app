@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import i18next from "i18next";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Alert, Text, View } from "react-native";
+import { Alert, SafeAreaView, Text, View } from "react-native";
 
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/view/Heading";
@@ -11,6 +11,8 @@ import { useTheme } from "@/theme";
 import ExploreHeaderContainer from "./ExploreHeaderContainer";
 import ExploreSearchBar from "@/components/app/explore/ExploreSearchBar";
 import CategoriesContainer from "@/components/app/explore/CategoriesContainer";
+import RecommendationContainer from "@/components/app/explore/RecommendationContainer";
+import ExploreProductsContainer from "@/components/app/explore/ExploreProductsContainer";
 
 function ExploreScreenContainer() {
   const { t } = useTranslation(["common", "welcome"]);
@@ -56,6 +58,8 @@ function ExploreScreenContainer() {
         <ExploreHeaderContainer />
         <ExploreSearchBar />
         <CategoriesContainer />
+        <RecommendationContainer />
+        <ExploreProductsContainer />
       </View>
     </>
   );

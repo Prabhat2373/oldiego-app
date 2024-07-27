@@ -8,6 +8,12 @@ import PickLocation from "@/screens/explore/PickLocation";
 import ExploreScreen from "../../screens/explore/ExploreScreen";
 import Parent from "../../screens/Parent";
 import ProfileScreen from "../../screens/profile/ProfileScreen";
+import {
+  IconHome,
+  IconMessage,
+  IconSearch,
+  IconUser,
+} from "@tabler/icons-react-native";
 
 export const StackRoutes = [
   //   {
@@ -56,7 +62,7 @@ export const StackRoutes = [
 export const TabRoutes = [
   {
     route: "explore",
-    label: "explore",
+    label: "Explore",
     // icon: (isActive: boolean) => (
     //   <Icon
     //     type={Icons.MaterialCommunityIcons}
@@ -69,10 +75,11 @@ export const TabRoutes = [
     component: ExploreScreen,
     level: 0,
     isHidden: false,
+    icon: IconHome,
   },
   {
     route: "search",
-    label: "search",
+    label: "Search",
     // icon: (isActive: boolean) => (
     //   <Icon
     //     type={Icons.Ionicons}
@@ -85,6 +92,7 @@ export const TabRoutes = [
     component: ProfileScreen,
     level: 0,
     isHidden: false,
+    icon: IconSearch,
     // mainIcon: true,
   },
   // {
@@ -125,12 +133,13 @@ export const TabRoutes = [
     component: ProfileScreen,
     level: 0,
     isHidden: false,
+    icon: IconMessage,
     // mainIcon: true,
   },
 
   {
     route: "profile",
-    label: "profile",
+    label: "Profile",
     // icon: (isActive: boolean) => (
     //   <Icon
     //     type={Icons.FontAwesome}
@@ -141,5 +150,6 @@ export const TabRoutes = [
     // ),
     component: ProfileScreen,
     isHidden: false,
+    icon: IconUser,
   },
 ];
